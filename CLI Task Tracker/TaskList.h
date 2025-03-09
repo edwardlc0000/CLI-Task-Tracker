@@ -5,6 +5,7 @@
  * Created By: Edward Cromwell
  *
  * Description: This is the header file for the TaskList class.
+ * 
  */
 
 #ifndef TASKLIST_H
@@ -37,13 +38,6 @@ class TaskList
 		 * Effects: Contructor for the TaskList class that takes a file path.
 		 */
 		TaskList(string path);
-
-		 /*
-		  * Requires: Nothing.
-		  * Modifies: task_count, file_path.
-		  * Effects: Destructor for the TaskList class. 
-		  */
-		~TaskList();
 
 		/*
 		 * Requires: Nothing.
@@ -79,6 +73,13 @@ class TaskList
 		 * Effects: Removes a task from the task list.
 		 */
 		void remove_task(int id);
+
+		/*
+		 * Requires: id is a valid integer.
+		 * Modifies: Task object in task_list.
+		 * Effects: Updates a task in the task list.
+		 */
+		void update_task(int id, string name, string description, string status);
 
 		/*
 		 * Requires: path is a valid string.

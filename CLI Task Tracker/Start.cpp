@@ -1,5 +1,5 @@
 /*
- * Start.cpp : This file contains the 'main' function.Program execution begins and ends there.
+ * Start.cpp: This file contains the 'main' function.Program execution begins and ends there.
  * 
  * Created On: 2025-03-09
  * Created By: Edward Cromwell

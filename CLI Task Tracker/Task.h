@@ -5,6 +5,7 @@
  * Created By: Edward Cromwell
  * 
  * Description: This is the header file for the Task class.
+ * 
  */
 
 
@@ -26,21 +27,14 @@ class Task
 		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
 		 * Effects: Default constructor for the Task class.
 		 */
-		Task();
+		Task(int id);
 
 		/*
 		 * Requires: name and description are valid strings.
 		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
 		 * Effects: Constructor for the Task class that takes a name and description.
 		 */
-		Task(string name, string description);
-
-		/*
-		 * Requires: Nothing.
-		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
-		 * Effects: Destructor for the Task class.
-		 */
-		~Task();
+		Task(int id, string name, string description);
 
 		/*
 		 * Requires: Nothing.
@@ -86,21 +80,21 @@ class Task
 
 		/*
 		 * Requires: name is a valid string.
-		 * Modifies: task_name.
+		 * Modifies: task_name, task_updated time.
 		 * Effects: Sets the task name.
 		 */
 		void set_task_name(string name);
 
 		/*
 		 * Requires: description is a valid string.
-		 * Modifies: task_description.
+		 * Modifies: task_description, task_updated time.
 		 * Effects: Sets the task description.
 		 */
 		void set_task_description(string description);
 
 		/*
 		 * Requires: status is a valid string.
-		 * Modifies: task_status.
+		 * Modifies: task_status, task_updated time.
 		 * Effects: Sets the task status.
 		 */
 		void set_task_status(string status);
