@@ -154,6 +154,7 @@
     <ClCompile Include="Start.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskList.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TaskList.h" />

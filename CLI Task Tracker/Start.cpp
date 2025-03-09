@@ -13,8 +13,10 @@
  */ 
 
 #include <iostream>
-#include <fstream>
+#include <string>
 #include <ctime>
+
+#include <fstream>
 #include <nlohmann\json.hpp>
 
 using namespace std;
@@ -22,21 +24,49 @@ using json = nlohmann::json;
 
 int main()
 {
-	
+	cout << "-----------------------------" << endl;
+	cout << "CLI Task Tracker Menu Options" << endl;
+	cout << "-----------------------------" << endl;
+	cout << "1. Execute testing functions." << endl;
+	cout << "2. Launch CLI Task Tracker." << endl;
+	cout << "3. Exit." << endl;
+	cout << "Choice -> ";
+
+	int choice;
+	cin >> choice;
+
+	string junk;
+	getline(cin, junk);
+
+	switch (choice)
+	{
+		case 1:
+			cout << "Starting testing functions...";
+			break;
+		case 2:
+			cout << "Launching CLI Task Tracker...";
+			break;
+		default:
+			cout << "Exiting program...";
+			break;
+	}
+
+	/*
 	ifstream f("example.json");
 	json data = json::parse(f);
 	cout << data.dump(4) << endl;
-	
+	*/
 
-	/*/
+	/*
 	struct tm date_time;
 	time_t now = time(0);
 	localtime_s(&date_time, &now);
 	char tm_buffer[32];
 	asctime_s(tm_buffer, sizeof(tm_buffer), &date_time);
 	cout << "The current time: " << tm_buffer << endl;
-	return 0;
 	*/
+
+	return 0;
 }
 
 /* 
