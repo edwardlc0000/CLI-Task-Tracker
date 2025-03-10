@@ -17,10 +17,12 @@
 #include <nlohmann\json.hpp>
 #include "Task.h"
 
-using namespace std;
+using std::string;
+using std::ifstream;
+using std::ofstream;
 using json = nlohmann::json;
 
-const int MAX_TASKS = 100;
+const int MAX_TASKS = 128;
 
 class TaskList
 {

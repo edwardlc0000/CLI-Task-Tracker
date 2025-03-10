@@ -19,7 +19,10 @@
 #include <fstream>
 #include <nlohmann\json.hpp>
 
-using namespace std;
+using std::string;
+using std::cout; 
+using std::cin;
+using std::endl;
 using json = nlohmann::json;
 
 int main()

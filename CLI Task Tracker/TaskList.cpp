@@ -21,14 +21,15 @@ TaskList::TaskList(string path)
 {
 	ifstream f(path);
 	json user_list = json::parse(f);
-	task_count = user_list.size();
+	
 
-	for (int i = 0; i < task_count; i++)
+	for (int i = 0; i < user_list.size(); i++)
 	{
 		Task t(user_list[i]["task_ID"], user_list[i]["task_name"],
 			user_list[i]["task_description"], user_list[i]["task_status"], 
 			user_list[i]["task_created"], user_list[i]["task_updated"]);
 		task_list[i] = t;
+		task_count++;
 	}
 
 	file_path = path;
