@@ -27,7 +27,7 @@ class Task
 		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
 		 * Effects: Default constructor for the Task class.
 		 */
-		Task(int id);
+		Task();
 
 		/*
 		 * Requires: name and description are valid strings.
@@ -35,6 +35,13 @@ class Task
 		 * Effects: Constructor for the Task class that takes a name and description.
 		 */
 		Task(int id, string name, string description);
+
+		/*
+		 * Requires: name and description are valid strings.
+		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
+		 * Effects: Constructor for the Task class that takes a name, description, status, time created and time updated.
+		 */
+		Task(int id, string name, string description, string task_status, time_t task_updated, time_t task_created);
 
 		/*
 		 * Requires: Nothing.
@@ -98,6 +105,20 @@ class Task
 		 * Effects: Sets the task status.
 		 */
 		void set_task_status(string status);
+
+		/*
+		 * Requires: time is a valid time.
+		 * Modifies: task_updated time.
+		 * Effects: Updates the task_updated time.
+		 */
+		//void set_task_updated(time_t time);
+
+		/*
+		 * Requires: time is a valid time.
+		 * Modifies: task_created time.
+		 * Effects: Updates the task_created time.
+		 */
+		//void set_task_created(time_t time);
 
 	private:
 

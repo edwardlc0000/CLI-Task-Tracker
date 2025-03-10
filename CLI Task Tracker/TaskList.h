@@ -72,14 +72,14 @@ class TaskList
 		 * Modifies: task_list, task_count.
 		 * Effects: Removes a task from the task list.
 		 */
-		void remove_task(int id);
+		bool remove_task(int id);
 
 		/*
 		 * Requires: id is a valid integer.
 		 * Modifies: Task object in task_list.
 		 * Effects: Updates a task in the task list.
 		 */
-		void update_task(int id, string name, string description, string status);
+		bool update_task(int id, string name, string description, string status);
 
 		/*
 		 * Requires: path is a valid string.

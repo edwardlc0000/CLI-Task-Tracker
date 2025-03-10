@@ -55,6 +55,7 @@ int main()
 	ifstream f("example.json");
 	json data = json::parse(f);
 	cout << data.dump(4) << endl;
+	cout << data.size() << endl;
 	*/
 
 	/*
