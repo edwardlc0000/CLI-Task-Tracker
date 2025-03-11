@@ -21,15 +21,15 @@ TaskList::TaskList()
 TaskList::TaskList(string path)
 {
 	ifstream f(path);
-	json user_list = json::parse(f);
+	json in_list = json::parse(f);
 	task_count = 0;
 	f.close();
 
-	for (int i = 0; i < user_list.size(); i++)
+	for (int i = 0; i < in_list.size(); i++)
 	{
-		Task t(user_list[i]["task_ID"], user_list[i]["task_name"],
-			user_list[i]["task_description"], user_list[i]["task_status"], 
-			user_list[i]["task_created"], user_list[i]["task_updated"]);
+		Task t(in_list[i]["task_ID"], in_list[i]["task_name"],
+			in_list[i]["task_description"], in_list[i]["task_status"], 
+			in_list[i]["task_created"], in_list[i]["task_updated"]);
 		task_list[i] = t;
 		task_count++;
 	}
@@ -110,7 +110,7 @@ void TaskList::set_file_path(string path)
 
 void TaskList::write_task_list()
 {
-	json user_list;
+	json out_list;
 	for (int i = 0; i < task_count; i++)
 	{
 		json task;
@@ -120,9 +120,9 @@ void TaskList::write_task_list()
 		task["task_status"] = task_list[i].get_task_status();
 		task["task_created"] = task_list[i].get_task_created();
 		task["task_updated"] = task_list[i].get_task_updated();
-		user_list.push_back(task);
+		out_list.push_back(task);
 	}
 	ofstream f(file_path);
-	f << user_list.dump(4);
+	f << out_list.dump(4);
 	f.close();
 }
