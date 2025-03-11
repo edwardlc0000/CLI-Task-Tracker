@@ -1,3 +1,15 @@
+
+/*
+ * Exceptions.h
+ *
+ * Created On: 2025-03-10
+ * Created By: Edward Cromwell
+ *
+ * Description: This is the header file for the exceptions classes.
+ *
+ */
+
+
 #ifndef EXCEPTIONS_H
 #define EXCEPTIONS_H
 
