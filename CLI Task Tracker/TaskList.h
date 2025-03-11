@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <nlohmann\json.hpp>
+#include "Exceptions.h"
 #include "Task.h"
 
 using std::string;
@@ -22,7 +23,7 @@ using std::ifstream;
 using std::ofstream;
 using json = nlohmann::json;
 
-const int MAX_TASKS = 128;
+const int MAX_TASKS = 16;
 
 class TaskList
 {
@@ -67,21 +68,21 @@ class TaskList
 		 * Modifies: task_list, task_count.
 		 * Effects: Adds a task to the task list.
 		 */
-		bool add_task(Task task);
+		void add_task(Task task);
 
 		/*
 		 * Requires: id is a valid integer.
 		 * Modifies: task_list, task_count.
 		 * Effects: Removes a task from the task list.
 		 */
-		bool remove_task(int id);
+		void remove_task(int id);
 
 		/*
 		 * Requires: id is a valid integer.
 		 * Modifies: Task object in task_list.
 		 * Effects: Updates a task in the task list.
 		 */
-		bool update_task(int id, string name, string description, string status);
+		void update_task(int id, string name, string description, string status);
 
 		/*
 		 * Requires: path is a valid string.

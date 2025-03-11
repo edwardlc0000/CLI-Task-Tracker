@@ -9,6 +9,7 @@
  */
 
 #include "TaskList.h"
+#include "Exceptions.h"
 #include "Task.h"
 
 TaskList::TaskList()
@@ -21,7 +22,8 @@ TaskList::TaskList(string path)
 {
 	ifstream f(path);
 	json user_list = json::parse(f);
-	
+	task_count = 0;
+	f.close();
 
 	for (int i = 0; i < user_list.size(); i++)
 	{
@@ -58,7 +60,7 @@ Task TaskList::get_task(int id)
 	return t;
 }
 
-bool TaskList::add_task(Task t)
+void TaskList::add_task(Task t)
 {
 	for (int i = 0; i < MAX_TASKS; i++)
 	{
@@ -66,13 +68,12 @@ bool TaskList::add_task(Task t)
 		{
 			task_list[i] = t;
 			task_count++;
-			return true;
 		}
 	}
-	return false;
+	throw task_list_full("The task list is full.");
 }
 
-bool TaskList::remove_task(int id)
+void TaskList::remove_task(int id)
 {
 	for (int i = 0; i < task_count; i++)
 	{
@@ -83,13 +84,12 @@ bool TaskList::remove_task(int id)
 				task_list[j] = task_list[j + 1];
 			}
 			task_count--;
-			return true;
 		}
 	}
-	return false;
+	throw task_not_found("The task was not found.");
 }
 
-bool TaskList::update_task(int id, string name, string description, string status)
+void TaskList::update_task(int id, string name, string description, string status)
 {
 	for (int i = 0; i < task_count; i++)
 	{
@@ -98,10 +98,9 @@ bool TaskList::update_task(int id, string name, string description, string statu
 			task_list[i].set_task_name(name);
 			task_list[i].set_task_description(description);
 			task_list[i].set_task_status(status);
-			return true;
 		}
 	}
-	return false;
+	throw task_not_found("The task was not found.");
 }
 
 void TaskList::set_file_path(string path)
