@@ -27,12 +27,12 @@ using json = nlohmann::json;
 
 int main()
 {
-	cout << "-----------------------------" << endl;
-	cout << "CLI Task Tracker Menu Options" << endl;
-	cout << "-----------------------------" << endl;
-	cout << "1. Execute testing functions." << endl;
-	cout << "2. Launch CLI Task Tracker." << endl;
-	cout << "3. Exit." << endl;
+	cout << "-----------------------------\n";
+	cout << "CLI Task Tracker Menu Options\n";
+	cout << "-----------------------------\n";
+	cout << "1. Execute testing functions.\n";
+	cout << "2. Launch CLI Task Tracker.\n";
+	cout << "3. Exit.\n";
 	cout << "Choice -> ";
 
 	int choice;
@@ -55,7 +55,7 @@ int main()
 	}
 
 	/*
-	ifstream f("example.json");
+	std::ifstream f("example.json");
 	json data = json::parse(f);
 	cout << data.dump(4) << endl;
 	cout << data.size() << endl;
