@@ -12,10 +12,16 @@
 #ifndef TASK_H
 #define TASK_H
 
-#include <string>
 #include <ctime>
+#include <string>
+#include <format>
+#include <iostream>
+#include <vector>
 
 using std::string;
+using std::ostream;
+using std::format;
+using std::vector;
 
 class Task
 {
@@ -31,16 +37,9 @@ class Task
 		/*
 		 * Requires: name and description are valid strings.
 		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
-		 * Effects: Constructor for the Task class that takes a name and description.
-		 */
-		Task(int id, string name, string description);
-
-		/*
-		 * Requires: name and description are valid strings.
-		 * Modifies: task_ID, task_name, task_description, task_status, task_created, task_updated.
 		 * Effects: Constructor for the Task class that takes a name, description, status, time created and time updated.
 		 */
-		Task(int id, string name, string description, string task_status, time_t task_updated, time_t task_created);
+		Task(int id, string name, string description, string task_status, time_t task_updated = time(0), time_t task_created = time(0));
 
 		/*
 		 * Requires: Nothing.
@@ -105,20 +104,6 @@ class Task
 		 */
 		void set_task_status(string status);
 
-		/*
-		 * Requires: time is a valid time.
-		 * Modifies: task_updated time.
-		 * Effects: Updates the task_updated time.
-		 */
-		//void set_task_updated(time_t time);
-
-		/*
-		 * Requires: time is a valid time.
-		 * Modifies: task_created time.
-		 * Effects: Updates the task_created time.
-		 */
-		//void set_task_created(time_t time);
-
 	private:
 
 		int task_ID;
@@ -131,5 +116,11 @@ class Task
 
 };
 
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Nothing.
+		 * Effects: Overloads the << operator to print the task.
+		 */
+		ostream& operator<<(ostream& os, Task& task);
 
 #endif // TASK_H

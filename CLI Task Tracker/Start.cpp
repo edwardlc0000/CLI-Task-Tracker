@@ -15,9 +15,9 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-
 #include <fstream>
 #include <nlohmann\json.hpp>
+#include "Test.h"
 
 using std::string;
 using std::cout; 
@@ -44,7 +44,7 @@ int main()
 	switch (choice)
 	{
 		case 1:
-			cout << "Starting testing functions...";
+			start_tests();
 			break;
 		case 2:
 			cout << "Launching CLI Task Tracker...";
@@ -59,15 +59,6 @@ int main()
 	json data = json::parse(f);
 	cout << data.dump(4) << endl;
 	cout << data.size() << endl;
-	*/
-
-	/*
-	struct tm date_time;
-	time_t now = time(0);
-	localtime_s(&date_time, &now);
-	char tm_buffer[32];
-	asctime_s(tm_buffer, sizeof(tm_buffer), &date_time);
-	cout << "The current time: " << tm_buffer << endl;
 	*/
 
 	return 0;
