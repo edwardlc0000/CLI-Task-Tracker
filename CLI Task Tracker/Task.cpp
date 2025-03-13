@@ -83,19 +83,19 @@ ostream& operator<<(ostream& os, Task& task)
 	struct tm created_date_time;
 	time_t created = task.get_task_created();
 	localtime_s(&created_date_time, &created);
-	vector<char> created_buffer(26);
-	asctime_s(created_buffer.data(), created_buffer.size(), &created_date_time);
-	created_buffer[created_buffer.size() - 2] = '\0';
+	char created_buffer[26];
+	asctime_s(created_buffer, sizeof(created_buffer), &created_date_time);
+	created_buffer[sizeof(created_buffer) - 2] = '\0';
 
 	struct tm updated_date_time;
 	time_t updated = task.get_task_updated();
 	localtime_s(&updated_date_time, &updated);
-	vector<char> updated_buffer(26);
-	asctime_s(updated_buffer.data(), updated_buffer.size(), &updated_date_time);
+	char updated_buffer[26];
+	asctime_s(updated_buffer, sizeof(updated_buffer), &updated_date_time);
 
 	os << format("Task ID: {}\t Name: {}\t Description: {}\t Status: {}\nCreated: {}\t Updated: {}",
 		task.get_task_ID(), task.get_task_name(), task.get_task_description(),
-		task.get_task_status(), created_buffer.data(), updated_buffer.data());
+		task.get_task_status(), created_buffer, updated_buffer);
 	return os;
 }
 
