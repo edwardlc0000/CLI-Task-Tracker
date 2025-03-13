@@ -9,7 +9,7 @@
  *
  */
 
-
+#pragma once
 #ifndef EXCEPTIONS_H
 #define EXCEPTIONS_H
 
