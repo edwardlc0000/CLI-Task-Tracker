@@ -14,10 +14,10 @@
 
 void start_tests()
 {
-	cout << "Starting testing functions...\n";
+	cout << "\nStarting testing functions...\n";
 	test_task();
 	test_task_list();
-	cout << "Tests complete.\n";
+	cout << "\nTests complete.\n";
 }
 
 
