@@ -1,11 +1,11 @@
 /*
  * Task.cpp
- * 
+ *
  * Created On: 2025-03-09
  * Created By: Edward Cromwell
- * 
+ *
  * Description: This is the implementation file for the Task class.
- * 
+ *
  */
 
 #include "Task.h"
@@ -93,9 +93,19 @@ ostream& operator<<(ostream& os, Task& task)
 	char updated_buffer[26];
 	asctime_s(updated_buffer, sizeof(updated_buffer), &date_time);
 
-	os << format("Task ID: {}\t Name: {}\t Description: {}\t Status: {}\nCreated: {}\t Updated: {}",
-		task.get_task_ID(), task.get_task_name(), task.get_task_description(),
-		task.get_task_status(), created_buffer, updated_buffer);
+	if (task.get_task_status() == "done")
+	{
+		os << format("\033[9mTask ID: {}\tName: {}\tDescription: {}\tStatus: {}\033[0m\nCreated: {}\tUpdated: {}",
+			task.get_task_ID(), task.get_task_name(), task.get_task_description(),
+			task.get_task_status(), created_buffer, updated_buffer);
+	}
+	else 
+	{
+		os << format("Task ID: {}\tName: {}\tDescription: {}\tStatus: {}\nCreated: {}\tUpdated: {}",
+			task.get_task_ID(), task.get_task_name(), task.get_task_description(),
+			task.get_task_status(), created_buffer, updated_buffer);
+	}
+
 	return os;
 }
 
