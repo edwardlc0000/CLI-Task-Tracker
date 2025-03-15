@@ -25,12 +25,28 @@ TaskList::TaskList(path read_path)
 		throw file_not_found("The file was not found.");
 	}
 
+	if (path(read_path).extension() != ".json")
+	{
+		throw file_not_found("The file is not a .json file.");
+	}
+
 	ifstream f(read_path);
 	json in_list = json::parse(f);
-	task_count = 0;
 	f.close();
 
-	for (int i = 0; i < in_list.size(); i++)
+	if (in_list.contains("task_ID") == false)
+	{
+		throw file_not_found("The file is not a task list.");
+	}
+
+	if (in_list.size() > MAX_TASKS)
+	{
+		throw file_too_large("The input file is too large.");
+	}
+
+	task_count = 0;
+
+	for (int i = 0; i < MAX_TASKS; i++)
 	{
 		Task t(in_list[i]["task_ID"], in_list[i]["task_name"],
 			in_list[i]["task_description"], in_list[i]["task_status"], 

@@ -57,14 +57,26 @@ class file_not_found : public exception
 
 class directory_not_found : public exception
 {
-public:
-	directory_not_found(const string& message) : msg_(message) {}
-	virtual const char* what() const noexcept override
-	{
-		return msg_.c_str();
-	}
-private:
-	string msg_;
+	public:
+		directory_not_found(const string& message) : msg_(message) {}
+		virtual const char* what() const noexcept override
+		{
+			return msg_.c_str();
+		}
+	private:
+		string msg_;
+};
+
+class file_too_large : public exception
+{
+	public:
+		file_too_large(const string& message) : msg_(message) {}
+		virtual const char* what() const noexcept override
+		{
+			return msg_.c_str();
+		}
+	private:
+		string msg_;
 };
 
 #endif // EXCEPTIONS_H
