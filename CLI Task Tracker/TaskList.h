@@ -15,6 +15,7 @@
 #include <fstream>
 #include <string>
 #include <filesystem>
+#include <algorithm>
 #include <nlohmann\json.hpp>
 #include "Exceptions.h"
 #include "Task.h"
@@ -23,6 +24,7 @@ using std::string;
 using std::ifstream;
 using std::ofstream;
 using std::filesystem::path;
+using std::min;
 using json = nlohmann::json;
 
 const int MAX_TASKS = 16;
@@ -84,7 +86,14 @@ class TaskList
 		 * Modifies: Task object in task_list.
 		 * Effects: Updates a task in the task list.
 		 */
-		void update_task(int id, string name, string description, string status);
+		void update_task(int id, string status);
+
+		/*
+		 * Requires: id is a valid integer.
+		 * Modified: Task object in task_list.
+		 * Effects: Edits a task in the task list.
+		 */
+		void edit_task(int id, string name, string description, string status);
 
 		/*
 		 * Requires: write_path is a valid string.
