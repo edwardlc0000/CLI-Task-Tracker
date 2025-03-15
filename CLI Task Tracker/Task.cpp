@@ -12,12 +12,13 @@
 
 Task::Task()
 {
-	task_ID = 0;
+	task_ID = next_task_ID;
 	task_name = "";
 	task_description = "";
 	task_status = "to do";
 	task_created = time(0);
 	task_updated = time(0);
+	next_task_ID++;
 }
 
 Task::Task(int id, string name, string description, string status, time_t updated, time_t created)

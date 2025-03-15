@@ -21,6 +21,8 @@ using std::string;
 using std::ostream;
 using std::format;
 
+static int next_task_ID = 0;
+
 class Task
 {
 	public:
