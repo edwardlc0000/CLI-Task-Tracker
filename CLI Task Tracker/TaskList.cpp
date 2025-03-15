@@ -15,7 +15,7 @@
 TaskList::TaskList()
 {
 	task_count = 0;
-	file_path = "task list.json";
+	file_path = "task_list.json";
 }
 
 TaskList::TaskList(path read_path)

@@ -14,7 +14,6 @@
 
 void start_tests()
 {
-	cout << "\nStarting testing functions...\n";
 	cout << "--------------------------------\n";
 	cout << "Testing Task class...\n";
 	test_task();
@@ -74,7 +73,7 @@ void test_task_list()
 	cout << "\nTesting TaskList class non-default constructor...\n";
 	try
 	{
-		TaskList tl1("task_list.json");
+		TaskList tl1("test_task_list.json");
 		cout << "TaskList 1:\n";
 		cout << "Task Count: " << tl1.get_task_count() << endl;
 		cout << "File Path: " << tl1.get_file_path() << endl;
