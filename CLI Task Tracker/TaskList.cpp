@@ -20,6 +20,11 @@ TaskList::TaskList()
 
 TaskList::TaskList(path read_path)
 {
+	if (exists(read_path) == false)
+	{
+		throw file_not_found("The file was not found.");
+	}
+
 	ifstream f(read_path);
 	json in_list = json::parse(f);
 	task_count = 0;
@@ -56,8 +61,7 @@ Task TaskList::get_task(int id)
 			return task_list[i];
 		}
 	}
-	Task t;
-	return t;
+	throw task_not_found("The task was not found.");
 }
 
 void TaskList::add_task(Task t)
@@ -105,6 +109,10 @@ void TaskList::update_task(int id, string name, string description, string statu
 
 void TaskList::set_file_path(path write_path)
 {
+	if (is_directory(write_path.parent_path()) == false)
+	{
+		throw directory_not_found("The directory was not found.");
+	}
 	file_path = write_path;
 }
 
