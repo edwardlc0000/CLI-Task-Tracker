@@ -15,15 +15,22 @@
 void start_tests()
 {
 	cout << "\nStarting testing functions...\n";
+	cout << "--------------------------------\n";
+	cout << "Testing Task class...\n";
 	test_task();
+
+	cout << "--------------------------------\n";
+	cout << "Testing TaskList class...\n";
 	test_task_list();
+
 	cout << "\nTests complete.\n";
+	cout << "--------------------------------\n";
 }
 
 
 void test_task()
 {
-	cout << "Testing Task class default constructor...\n";
+	cout << "\nTesting Task class default constructor...\n";
 	Task t0;
 	cout << "Task 0:\n" << t0 << endl;
 
@@ -58,20 +65,91 @@ void test_task()
 
 void test_task_list()
 {
-	/*
-	TaskList tl("task_list.json");
-	Task t1(1, "Task 1", "This is the first task", "to do");
-	Task t2(2, "Task 2", "This is the second task", "in progress");
-	Task t3(3, "Task 3", "This is the third task", "done");
-	tl.add_task(t1);
-	tl.add_task(t2);
-	tl.add_task(t3);
-	cout << "Task List: " << tl << endl;
-	tl.remove_task(2);
-	cout << "Task List: " << tl << endl;
-	tl.remove_task(1);
-	cout << "Task List: " << tl << endl;
-	tl.remove_task(3);
-	cout << "Task List: " << tl << endl;
-	*/
+	cout << "\nTesting TaskList class default constructor...\n";
+	TaskList tl0;
+	cout << "TaskList 0:\n";
+	cout << "Task Count: " << tl0.get_task_count() << endl;
+	cout << "File Path: " << tl0.get_file_path() << endl;
+	
+	cout << "\nTesting TaskList class non-default constructor...\n";
+	try
+	{
+		TaskList tl1("task_list.json");
+		cout << "TaskList 1:\n";
+		cout << "Task Count: " << tl1.get_task_count() << endl;
+		cout << "File Path: " << tl1.get_file_path() << endl;
+	}
+	catch (const std::exception& e)
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+	
+	cout << "\nTesting TaskList class add_task method...\n";
+	Task t5(5, "Task 5", "This is the first in the list", "to do");
+	try
+	{
+		tl0.add_task(t5);
+	}
+	catch (const std::exception& e)
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+
+	cout << "Task Count: " << tl0.get_task_count() << endl;
+
+	cout << "\nTesting TaskList class get_task method...\n";
+	try
+	{
+		Task t = tl0.get_task(5);
+		cout << "Task 5:\n" << t << endl;
+	}
+	catch (const std::exception& e) 
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+
+	cout << "\nTesting TaskList class remove_task method...\n";
+	try
+	{
+		tl0.remove_task(5);
+		cout << "Task Count: " << tl0.get_task_count() << endl;
+	}
+	catch (const std::exception& e)
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+
+	cout << "\nTesting TaskList class update_task method...\n";
+	tl0.add_task(t5);
+	tl0.update_task(5, "in progress");
+	try
+	{
+		Task t = tl0.get_task(5);
+		cout << "Task 5:\n" << t << endl;
+	}
+	catch (const std::exception& e)
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+
+	cout << "\nTesting TaskList class set_file_path method...\n";
+	try
+	{
+		tl0.set_file_path("new_task_list.json");
+		cout << "File Path: " << tl0.get_file_path() << endl;
+	}
+	catch (const std::exception& e) 
+	{
+		cout << "Exception: " << e.what() << endl;
+	}
+
+	cout << "\nTesting TaskList class write_task_list method...\n";
+	try
+	{
+		tl0.write_task_list();
+		cout << "Task list written to file.\n";
+	}
+	catch (const std::exception& e) {
+		cout << "Exception: " << e.what() << endl;
+	}
 }

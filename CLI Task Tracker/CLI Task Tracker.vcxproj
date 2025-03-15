@@ -165,9 +165,12 @@
     <ClInclude Include="TaskList.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="Test.h" />
+    <ClInclude Include="Tracker.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="example.json" />
+    <None Include="new_task_list.json" />
+    <None Include="task_list.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

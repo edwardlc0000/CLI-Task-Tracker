@@ -41,9 +41,18 @@
     <ClInclude Include="Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="example.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="new_task_list.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="task_list.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
