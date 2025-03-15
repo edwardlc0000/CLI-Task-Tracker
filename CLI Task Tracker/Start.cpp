@@ -59,6 +59,7 @@ int main()
 	json data = json::parse(f);
 	cout << data.dump(4) << endl;
 	cout << data.size() << endl;
+	cout << data[0].contains("color") << endl;
 	*/
 
 	return 0;
