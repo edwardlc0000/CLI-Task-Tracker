@@ -29,6 +29,7 @@ Task::Task(int id, string name, string description, string status, time_t update
 	task_status = status;
 	task_created = created;
 	task_updated = updated;
+	next_task_ID = id + 1;
 }
 
 int Task::get_task_ID()
