@@ -159,6 +159,7 @@
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskList.cpp" />
     <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Tracker.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Exceptions.h" />
@@ -170,7 +171,7 @@
   <ItemGroup>
     <None Include="example.json" />
     <None Include="new_task_list.json" />
-    <None Include="task_list.json" />
+    <None Include="test_task_list.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

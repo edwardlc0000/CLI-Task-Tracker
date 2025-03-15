@@ -13,11 +13,8 @@
  */ 
 
 #include <iostream>
-#include <string>
-#include <ctime>
-#include <fstream>
-#include <nlohmann\json.hpp>
 #include "Test.h"
+#include "Tracker.h"
 
 using std::string;
 using std::cout; 
@@ -27,9 +24,9 @@ using json = nlohmann::json;
 
 int main()
 {
-	cout << "-----------------------------\n";
-	cout << "CLI Task Tracker Menu Options\n";
-	cout << "-----------------------------\n";
+	cout << "------------------------------\n";
+	cout << "CLI Task Tracker Start Options\n";
+	cout << "------------------------------\n";
 	cout << "1. Execute testing functions.\n";
 	cout << "2. Launch CLI Task Tracker.\n";
 	cout << "3. Exit.\n";
@@ -44,23 +41,17 @@ int main()
 	switch (choice)
 	{
 		case 1:
+			cout << "\nStarting testing functions...\n";
 			start_tests();
 			break;
 		case 2:
-			cout << "Launching CLI Task Tracker...";
+			cout << "\nLaunching CLI Task Tracker...\n";
+			Tracker().main_menu();
 			break;
 		default:
-			cout << "Exiting program...";
+			cout << "\nExiting program...";
 			break;
 	}
-
-	/*
-	std::ifstream f("example.json");
-	json data = json::parse(f);
-	cout << data.dump(4) << endl;
-	cout << data.size() << endl;
-	cout << data[0].contains("color") << endl;
-	*/
 
 	return 0;
 }
