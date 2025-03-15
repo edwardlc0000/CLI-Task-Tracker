@@ -14,6 +14,7 @@
 
 #include <fstream>
 #include <string>
+#include <filesystem>
 #include <nlohmann\json.hpp>
 #include "Exceptions.h"
 #include "Task.h"
@@ -21,6 +22,7 @@
 using std::string;
 using std::ifstream;
 using std::ofstream;
+using std::filesystem::path;
 using json = nlohmann::json;
 
 const int MAX_TASKS = 16;
@@ -36,11 +38,11 @@ class TaskList
 		TaskList();
 
 		/*
-		 * Requires: path is a valid string.
+		 * Requires: file_path references a valid .json file.
 		 * Modifies: task_count, file_path.
 		 * Effects: Contructor for the TaskList class that takes a file path.
 		 */
-		TaskList(string path);
+		TaskList(path read_path);
 
 		/*
 		 * Requires: Nothing.
@@ -54,7 +56,7 @@ class TaskList
 		 * Modifies: Nothing.
 		 * Effects: Returns the file_path.
 		 */
-		string get_file_path();
+		path get_file_path();
 
 		/*
 		 * Requires: id is a valid integer.
@@ -85,11 +87,11 @@ class TaskList
 		void update_task(int id, string name, string description, string status);
 
 		/*
-		 * Requires: path is a valid string.
+		 * Requires: write_path is a valid string.
 		 * Modifies: file_path.
 		 * Effects: Sets the file path.
 		 */
-		void set_file_path(string path);
+		void set_file_path(path write_path);
 
 		/*
 		 * Requires: file_path is a valid file path.
@@ -101,7 +103,7 @@ class TaskList
 	private:
 		Task task_list[MAX_TASKS];
 		int task_count;
-		string file_path;
+		path file_path;
 
 };
 

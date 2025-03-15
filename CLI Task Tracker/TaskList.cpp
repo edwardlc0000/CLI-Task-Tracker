@@ -18,9 +18,9 @@ TaskList::TaskList()
 	file_path = "task list.json";
 }
 
-TaskList::TaskList(string path)
+TaskList::TaskList(path read_path)
 {
-	ifstream f(path);
+	ifstream f(read_path);
 	json in_list = json::parse(f);
 	task_count = 0;
 	f.close();
@@ -34,7 +34,7 @@ TaskList::TaskList(string path)
 		task_count++;
 	}
 
-	file_path = path;
+	file_path = read_path;
 }
 
 int TaskList::get_task_count()
@@ -42,7 +42,7 @@ int TaskList::get_task_count()
 	return task_count;
 }
 
-string TaskList::get_file_path()
+path TaskList::get_file_path()
 {
 	return file_path;
 }
@@ -103,9 +103,9 @@ void TaskList::update_task(int id, string name, string description, string statu
 	throw task_not_found("The task was not found.");
 }
 
-void TaskList::set_file_path(string path)
+void TaskList::set_file_path(path write_path)
 {
-	file_path = path;
+	file_path = write_path;
 }
 
 void TaskList::write_task_list()
