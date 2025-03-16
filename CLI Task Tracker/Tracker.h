@@ -60,6 +60,48 @@ class Tracker
 		 */
 		void task_menu();
 
+		/*
+		 * Requires: Nothing
+		 * Modifies: task_list, Task object in task_list.
+		 * Effects: Creates a new task and adds it to the task list.
+		 */
+		void create_task_menu();
+
+		/*
+		 * Requires: Nothing
+		 * Modifies: task_list, Task object in task_list.
+		 * Effects: Removes a task from the task list.
+		 */
+		void remove_task_menu();
+
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Task object in task_list.
+		 * Effects: Updates a task in the task list.
+		 */
+		void update_task_menu();
+
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Task object in task_list.
+		 * Effects: Edits a task in the task list.
+		 */
+		void edit_task_menu();
+
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Nothing.
+		 * Effects: Outputs all tasks in the task list.
+		 */
+		void view_task_list_menu();
+
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Contents of a .json.
+		 * Effects: Writes the task list to a file.
+		 */
+		void write_task_list_menu();
+
 	private:
 		TaskList task_list;
 		string mode;
