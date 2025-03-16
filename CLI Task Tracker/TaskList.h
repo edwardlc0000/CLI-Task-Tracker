@@ -13,6 +13,7 @@
 #define TASKLIST_H
 
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <filesystem>
 #include <algorithm>
@@ -23,6 +24,8 @@
 using std::string;
 using std::ifstream;
 using std::ofstream;
+using std::cout;
+using std::endl;
 using std::filesystem::path;
 using std::min;
 using json = nlohmann::json;
@@ -94,6 +97,13 @@ class TaskList
 		 * Effects: Edits a task in the task list.
 		 */
 		void edit_task(int id, string name, string description, string status);
+
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Nothing.
+		 * Effects: Prints the task list.
+		 */
+		void display_task_list();
 
 		/*
 		 * Requires: write_path is a valid string.

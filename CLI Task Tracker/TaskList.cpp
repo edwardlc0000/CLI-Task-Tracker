@@ -146,6 +146,14 @@ void TaskList::edit_task(int id, string name, string description, string status)
 	throw task_not_found("The task was not found.");
 }
 
+void TaskList::display_task_list()
+{
+	for (int i = 0; i < task_count; i++)
+	{
+		cout << task_list[i] << endl;
+	}
+}
+
 void TaskList::set_file_path(path write_path)
 {
 	if (write_path.has_parent_path()) 
