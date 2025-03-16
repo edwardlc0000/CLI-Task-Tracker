@@ -41,7 +41,6 @@ int main()
 	switch (choice)
 	{
 		case 1:
-			cout << "\nStarting testing functions...\n";
 			start_tests();
 			break;
 		case 2:

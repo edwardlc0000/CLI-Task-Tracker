@@ -14,6 +14,8 @@
 
 void start_tests()
 {
+	system("cls");
+	cout << "\nStarting testing functions...\n";
 	cout << "--------------------------------\n";
 	cout << "Testing Task class...\n";
 	test_task();

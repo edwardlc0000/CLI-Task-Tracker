@@ -14,6 +14,7 @@
 #define TEST_H
 
 #include <iostream>
+#include <cstdlib>
 #include "Exceptions.h"
 #include "Task.h"
 #include "TaskList.h"
