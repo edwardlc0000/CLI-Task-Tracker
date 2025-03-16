@@ -34,28 +34,28 @@ class Tracker
 
 		/*
 		 * Requires: Nothing.
-		 * Modifies: 
+		 * Modifies: Mode.
 		 * Effects: Default constructor for the Tracker class.
 		 */
 		Tracker();
 
 		/*
 		 * Requires: Nothing
-		 * Modifies: 
+		 * Modifies: Mode.
 		 * Effects: Selects the main menu option.
 		 */
 		void main_menu();
 
 		/*
 		 * Requires: Nothing.
-		 * Modifies: 
+		 * Modifies: task_list, mode.
 		 * Effects: Selects the file to load a task list from.
 		 */
 		void file_menu();
 
 		/*
 		 * Requires: Nothing.
-		 * Modifies: 
+		 * Modifies: task_list, Task object in task_list.
 		 * Effects: Selects the task menu option.
 		 */
 		void task_menu();
