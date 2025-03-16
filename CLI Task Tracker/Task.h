@@ -21,7 +21,6 @@ using std::string;
 using std::ostream;
 using std::format;
 
-static int next_task_ID = 0;
 
 class Task
 {
@@ -104,9 +103,17 @@ class Task
 		 */
 		void set_task_status(string status);
 
+		/*
+		 * Requires: Nothing.
+		 * Modifies: Nothing.
+		 * Effects: Overloads the << operator to print the task.
+		 */
+		friend ostream& operator<<(ostream& os, const Task& task);
+
 	private:
 
 		int task_ID;
+		static int next_task_ID;
 		string task_name;
 		string task_description;
 		string task_status;
@@ -115,12 +122,5 @@ class Task
 
 
 };
-
-		/*
-		 * Requires: Nothing.
-		 * Modifies: Nothing.
-		 * Effects: Overloads the << operator to print the task.
-		 */
-		ostream& operator<<(ostream& os, Task& task);
 
 #endif // TASK_H

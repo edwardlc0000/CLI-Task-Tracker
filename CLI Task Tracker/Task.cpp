@@ -10,6 +10,8 @@
 
 #include "Task.h"
 
+int Task::next_task_ID = 0;
+
 Task::Task()
 {
 	task_ID = next_task_ID;
@@ -80,32 +82,32 @@ void Task::set_task_status(string status)
 	task_updated = time(0);
 }
 
-ostream& operator<<(ostream& os, Task& task)
+ostream& operator<<(ostream& os, const Task& task)
 {
 	struct tm date_time;
 
-	time_t created = task.get_task_created();
+	time_t created = task.task_created;
 	localtime_s(&date_time, &created);
 	char created_buffer[26];
 	asctime_s(created_buffer, sizeof(created_buffer), &date_time);
 	created_buffer[sizeof(created_buffer) - 2] = '\0';
 
-	time_t updated = task.get_task_updated();
+	time_t updated = task.task_updated;
 	localtime_s(&date_time, &updated);
 	char updated_buffer[26];
 	asctime_s(updated_buffer, sizeof(updated_buffer), &date_time);
 
-	if (task.get_task_status() == "done")
+	if (task.task_status == "done")
 	{
 		os << format("\033[9mTask ID: {}\tName: {}\tStatus: {}\nDescription: {}\033[0m\nCreated: {}\tUpdated: {}",
-			task.get_task_ID(), task.get_task_name(), task.get_task_status(), 
-			task.get_task_description(), created_buffer, updated_buffer);
+			task.task_ID, task.task_name, task.task_status, 
+			task.task_description, created_buffer, updated_buffer);
 	}
 	else 
 	{
 		os << format("Task ID: {}\tName: {}\tStatus: {}\nDescription: {}\nCreated: {}\tUpdated: {}",
-			task.get_task_ID(), task.get_task_name(), task.get_task_status(),
-			task.get_task_description(), created_buffer, updated_buffer);
+			task.task_ID, task.task_name, task.task_status,
+			task.task_description, created_buffer, updated_buffer);
 	}
 
 	return os;
