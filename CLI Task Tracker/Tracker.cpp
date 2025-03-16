@@ -19,6 +19,7 @@ Tracker::Tracker()
 
 void Tracker::main_menu()
 {
+	system("cls");
 	cout << "-----------------------------\n";
 	cout << "\tCLI Task Tracker\n";
 	cout << "-----------------------------\n";
@@ -51,8 +52,10 @@ void Tracker::main_menu()
 void Tracker::file_menu()
 {
 	cout << "Enter the file path: ";
-	string file_path;
-	getline(cin, file_path);
+	string path_string;
+	getline(cin, path_string);
+
+	path file_path(path_string);
 
 	try
 	{
@@ -67,104 +70,164 @@ void Tracker::file_menu()
 
 void Tracker::task_menu()
 {
-	cout << "-----------------------------\n";
-	cout << "\tTask Menu\n";
-	cout << "-----------------------------\n";
-	cout << "1. Add task.\n";
-	cout << "2. Remove task.\n";
-	cout << "3. Update task.\n";
-	cout << "4. View task list.\n";
-	cout << "5. Save task list.\n";
-	cout << "6. Exit.\n";
-	cout << "Choice -> ";
-
 	int choice;
-	cin >> choice;
-	string junk;
-	getline(cin, junk);
 
-	switch (choice)
+	do
 	{
-	case 1:
-	{
-		Task t;
-		string name;
-		string description;
-		string status;
+		system("cls");
+		cout << "-----------------------------\n";
+		cout << "\tTask Menu\n";
+		cout << "-----------------------------\n";
+		cout << "1. Add task.\n";
+		cout << "2. Remove task.\n";
+		cout << "3. Update task.\n";
+		cout << "4. Edit task.\n";
+		cout << "5. View task list.\n";
+		cout << "6. Save task list.\n";
+		cout << "7. Exit.\n";
+		cout << "Choice -> ";
 
-		cout << "Enter the task name: ";
-		getline(cin, name);
-		t.set_task_name(name);
-
-		cout << "Enter the task description: ";
-		getline(cin, description);
-		t.set_task_description(description);
-
-		cout << "Enter the task status: ";
-		getline(cin, status);
-		t.set_task_status(status);
-
-		task_list.add_task(t);
-		break;
-	}
-	case 2:
-	{
-		int id;
-
-		cout << "Enter the task ID: ";
-
-		cin >> id;
+		cin >> choice;
 		string junk;
 		getline(cin, junk);
 
-		try
+	
+		switch (choice)
 		{
-			task_list.remove_task(id);
+		case 1:
+		{
+			Task t;
+			string name;
+			string description;
+			string status;
+
+			cout << "\nEnter the task name: ";
+			getline(cin, name);
+			t.set_task_name(name);
+
+			cout << "Enter the task description: ";
+			getline(cin, description);
+			t.set_task_description(description);
+
+			cout << "Enter the task status: ";
+			getline(cin, status);
+			t.set_task_status(status);
+
+			task_list.add_task(t);
+			break;
 		}
-		catch (const std::exception& e)
+		case 2:
 		{
-			cout << "Exception: " << e.what() << endl;
+			int id;
+
+			cout << "\nEnter the task ID: ";
+			cin >> id;
+			string junk;
+			getline(cin, junk);
+
+			try
+			{
+				task_list.remove_task(id);
+			}
+			catch (const std::exception& e)
+			{
+				cout << "Exception: " << e.what() << endl;
+			}
+
+			break;
 		}
-
-		break;
-	}
-	case 3:
-	{
-		string status;
-		int id;
-
-		cout << "Enter the task ID: ";
-
-		cin >> id;
-		string junk;
-		getline(cin, junk);
-
-		cout << "Enter the task status: ";
-		getline(cin, status);
-
-		try
+		case 3:
 		{
-			task_list.update_task(id, status);
+			string status;
+			int id;
+
+			cout << "\nEnter the task ID: ";
+			cin >> id;
+			string junk;
+			getline(cin, junk);
+
+			cout << "Enter the task status: ";
+			getline(cin, status);
+
+			try
+			{
+				task_list.update_task(id, status);
+			}
+			catch (const std::exception& e)
+			{
+				cout << "Exception: " << e.what() << endl;
+			}
+
+			break;
 		}
-		catch (const std::exception& e)
+		case 4:
 		{
-			cout << "Exception: " << e.what() << endl;
-		}		
+			string name;
+			string description;
+			string status;
+			int id;
 
-		break;
-	}
-	case 4:
-	{
-		// View task
-		break;
-	}
-	case 5:
-	{
-		// Save task list
-		break;
-	}
-	default:
-		cout << "Exiting program...\n";
-		break;
-	}
+			cout << "\nEnter the task ID: ";
+			cin >> id;
+			string junk;
+			getline(cin, junk);
+
+			cout << "Enter the task name: ";
+			getline(cin, name);
+
+			cout << "Enter the task description: ";
+			getline(cin, description);
+
+			cout << "Enter the task status: ";
+			getline(cin, status);
+
+			try
+			{
+				task_list.edit_task(id, name, description, status);
+			}
+			catch (const std::exception& e)
+			{
+				cout << "Exception: " << e.what() << endl;
+			}
+			break;
+		}
+		case 5:
+		{
+			cout << "\nTask List:\n\n";
+			task_list.display_task_list();
+			system("pause");
+			break;
+		}
+		case 6:
+		{
+			string path_string;
+
+			cout << "\nEnter the file path: ";
+			getline(cin, path_string);
+			path file_path(path_string);
+			try
+			{
+				task_list.set_file_path(file_path);
+			}
+			catch (const std::exception& e)
+			{
+				cout << "Exception: " << e.what() << endl;
+			}
+
+			try
+			{
+				task_list.write_task_list();
+			}
+			catch (const std::exception& e)
+			{
+				cout << "Exception: " << e.what() << endl;
+			}
+
+			break;
+		}
+		default:
+			cout << "Exiting program...\n";
+			break;
+		}
+	} while (choice != 7);
 }

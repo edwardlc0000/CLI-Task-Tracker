@@ -15,6 +15,7 @@
 #include <ctime>
 #include <iostream>
 #include <filesystem>
+#include <cstdlib>
 #include <nlohmann\json.hpp>
 
 #include "Task.h"
