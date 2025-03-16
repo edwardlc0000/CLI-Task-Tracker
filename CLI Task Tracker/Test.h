@@ -15,9 +15,13 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <iostream>
+#include <sstream>
+#include <cassert>
 #include "Exceptions.h"
 #include "Task.h"
 #include "TaskList.h"
+#include "Tracker.h"
 
 using std::cout;
 using std::endl;
@@ -25,6 +29,7 @@ using std::endl;
 void start_tests();
 void test_task();
 void test_task_list();
+void test_tracker();
 
 #endif // !TEST_H
 

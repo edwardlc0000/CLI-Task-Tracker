@@ -23,8 +23,8 @@ void Tracker::main_menu()
 	cout << "-----------------------------\n";
 	cout << "\tCLI Task Tracker\n";
 	cout << "-----------------------------\n";
-	cout << "1. Read from file.\n";
-	cout << "2. Start new task list.\n";
+	cout << "1. Read from a file.\n";
+	cout << "2. Start a new task list.\n";
 	cout << "3. Exit.\n";
 	cout << "Choice -> ";
 
@@ -51,21 +51,38 @@ void Tracker::main_menu()
 
 void Tracker::file_menu()
 {
-	cout << "Enter the file path: ";
-	string path_string;
-	getline(cin, path_string);
-
-	path file_path(path_string);
-
-	try
+	bool initialized = false;
+	do
 	{
-		task_list = TaskList(file_path);
-		task_menu();
-	}
-	catch (const std::exception& e)
-	{
-		cout << "Exception: " << e.what() << endl;
-	}
+		system("cls");
+		cout << "-----------------------------\n";
+		cout << "\tFile Menu\n";
+		cout << "-----------------------------\n";
+		cout << "Enter :b to go back";
+		cout << "Enter the file path (.json): ";
+
+		string path_string;
+		getline(cin, path_string);
+
+		if (path_string == ":b")
+		{
+			main_menu();
+		}
+
+		path file_path(path_string);
+
+		try
+		{
+			task_list = TaskList(file_path);
+			initialized = true;
+			task_menu();
+		}
+		catch (const std::exception& e)
+		{
+			cout << "Exception: " << e.what() << endl;
+			system("pause");
+		}
+	} while (!initialized);
 }
 
 void Tracker::task_menu()
@@ -132,6 +149,7 @@ void Tracker::task_menu()
 			catch (const std::exception& e)
 			{
 				cout << "Exception: " << e.what() << endl;
+				system("pause");
 			}
 
 			break;
@@ -156,6 +174,7 @@ void Tracker::task_menu()
 			catch (const std::exception& e)
 			{
 				cout << "Exception: " << e.what() << endl;
+				system("pause");
 			}
 
 			break;
@@ -188,6 +207,7 @@ void Tracker::task_menu()
 			catch (const std::exception& e)
 			{
 				cout << "Exception: " << e.what() << endl;
+				system("pause");
 			}
 			break;
 		}
@@ -212,6 +232,7 @@ void Tracker::task_menu()
 			catch (const std::exception& e)
 			{
 				cout << "Exception: " << e.what() << endl;
+				system("pause");
 			}
 
 			try
@@ -221,6 +242,7 @@ void Tracker::task_menu()
 			catch (const std::exception& e)
 			{
 				cout << "Exception: " << e.what() << endl;
+				system("pause");
 			}
 
 			break;

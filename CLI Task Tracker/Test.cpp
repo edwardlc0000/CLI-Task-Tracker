@@ -24,6 +24,10 @@ void start_tests()
 	cout << "Testing TaskList class...\n";
 	test_task_list();
 
+	/*cout << "--------------------------------\n";
+	cout << "testing tracker class...\n";
+	test_tracker();*/
+
 	cout << "\nTests complete.\n";
 	cout << "--------------------------------\n";
 }
@@ -153,4 +157,41 @@ void test_task_list()
 	catch (const std::exception& e) {
 		cout << "Exception: " << e.what() << endl;
 	}
+}
+
+void test_tracker() {
+	cout << "\nTesting Tracker class...\n";
+
+	// Redirect cin and cout for testing
+	std::streambuf* orig_cin = cin.rdbuf();
+	std::streambuf* orig_cout = cout.rdbuf();
+	std::istringstream input;
+	std::ostringstream output;
+	cin.rdbuf(input.rdbuf());
+	cout.rdbuf(output.rdbuf());
+
+	// Test default constructor
+	Tracker tracker;
+	cout << "Default constructor test passed.\n";
+
+	// Test main_menu
+	input.str("1\n2\n3\n4\n");
+	tracker.main_menu();
+	cout << "Main menu test passed.\n";
+
+	// Test file_menu
+	input.str("test_task_list.json\n");
+	tracker.file_menu();
+	cout << "File menu test passed.\n";
+
+	// Test task_menu
+	input.str("1\n2\n3\n4\n");
+	tracker.task_menu();
+	cout << "Task menu test passed.\n";
+
+	// Restore cin and cout
+	cin.rdbuf(orig_cin);
+	cout.rdbuf(orig_cout);
+
+	cout << "Tracker class tests completed.\n";
 }
