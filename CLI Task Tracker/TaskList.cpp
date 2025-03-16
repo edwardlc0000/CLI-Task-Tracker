@@ -41,12 +41,12 @@ TaskList::TaskList(path read_path)
 
 	for (int i = 0; i < in_list.size() - 1; i++)
 	{
-		if (in_list[i].contains("task_ID") == false ||
-			in_list[i].contains("task_name") == false ||
-			in_list[i].contains("task_description") == false ||
-			in_list[i].contains("task_status") == false ||
-			in_list[i].contains("task_created") == false ||
-			in_list[i].contains("task_updated") == false)
+		if (!in_list[i].contains("task_ID") ||
+			!in_list[i].contains("task_name") ||
+			!in_list[i].contains("task_description") ||
+			!in_list[i].contains("task_status") ||
+			!in_list[i].contains("task_created") ||
+			!in_list[i].contains("task_updated"))
 		{
 			throw file_not_found("The file is not a task list.");
 		}
