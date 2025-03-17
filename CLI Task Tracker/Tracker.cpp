@@ -257,26 +257,41 @@ void Tracker::write_task_list_menu()
 {
 	string path_string;
 
-	cout << "\nEnter the file path: ";
-	getline(cin, path_string);
-	path file_path(path_string);
-	try
+	if(mode == "new")
 	{
-		task_list.set_file_path(file_path);
-	}
-	catch (const std::exception& e)
-	{
-		cout << "Exception: " << e.what() << endl;
-		system("pause");
-	}
+		cout << "\nEnter the file path: ";
+		getline(cin, path_string);
+		path file_path(path_string);
+		try
+		{
+			task_list.set_file_path(file_path);
+		}
+		catch (const std::exception& e)
+		{
+			cout << "Exception: " << e.what() << endl;
+			system("pause");
+		}
 
-	try
-	{
-		task_list.write_task_list();
+		try
+		{
+			task_list.write_task_list();
+		}
+		catch (const std::exception& e)
+		{
+			cout << "Exception: " << e.what() << endl;
+			system("pause");
+		}
 	}
-	catch (const std::exception& e)
+	else
 	{
-		cout << "Exception: " << e.what() << endl;
-		system("pause");
+		try
+		{
+			task_list.write_task_list();
+		}
+		catch (const std::exception& e)
+		{
+			cout << "Exception: " << e.what() << endl;
+			system("pause");
+		}
 	}
 }
