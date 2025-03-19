@@ -12,6 +12,15 @@
 #include "Exceptions.h"
 #include "Task.h"
 
+using std::string;
+using std::ifstream;
+using std::ofstream;
+using std::cout;
+using std::endl;
+using std::filesystem::path;
+using std::min;
+using json = nlohmann::json;
+
 TaskList::TaskList()
 {
 	task_count = 0;

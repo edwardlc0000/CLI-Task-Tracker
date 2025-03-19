@@ -23,9 +23,6 @@
 #include "TaskList.h"
 #include "Tracker.h"
 
-using std::cout;
-using std::endl;
-
 void start_tests();
 void test_task();
 void test_task_list();

@@ -11,10 +11,18 @@
 
 #include "Test.h"
 
+using std::cout;
+using std::cin;
+using std::endl;
 
 void start_tests()
 {
-	system("cls");
+	#ifdef _WIN32
+		std::system("cls");
+	#else
+		std::system("clear");
+	#endif
+
 	cout << "\nStarting testing functions...\n";
 	cout << "--------------------------------\n";
 	cout << "Testing Task class...\n";

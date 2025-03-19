@@ -12,6 +12,13 @@
 #include "Task.h"
 #include "TaskList.h"
 
+using std::string;
+using std::filesystem::path;
+using std::cout;
+using std::cin;
+using std::endl;
+using json = nlohmann::json;
+
 Tracker::Tracker()
 {
 	mode = "";
@@ -19,7 +26,12 @@ Tracker::Tracker()
 
 void Tracker::main_menu()
 {
-	system("cls");
+	#ifdef _WIN32
+		std::system("cls");
+	#else
+		std::system("clear");
+	#endif
+
 	cout << "-----------------------------\n";
 	cout << "\tCLI Task Tracker\n";
 	cout << "-----------------------------\n";
@@ -54,7 +66,13 @@ void Tracker::file_menu()
 	bool initialized = false;
 	do
 	{
-		system("cls");
+		#ifdef _WIN32
+			std::system("cls");
+		#else
+			std::system("clear");
+		#endif
+
+
 		cout << "-----------------------------\n";
 		cout << "\tFile Menu\n";
 		cout << "-----------------------------\n";
@@ -67,6 +85,7 @@ void Tracker::file_menu()
 		if (path_string == ":b")
 		{
 			main_menu();
+			return;
 		}
 
 		path file_path(path_string);
@@ -91,7 +110,11 @@ void Tracker::task_menu()
 
 	do
 	{
-		system("cls");
+		#ifdef _WIN32
+				std::system("cls");
+		#else
+				std::system("clear");
+		#endif
 		cout << "-----------------------------\n";
 		cout << "\tTask Menu\n";
 		cout << "-----------------------------\n";

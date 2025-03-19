@@ -18,9 +18,6 @@
 #include <iostream>
 
 using std::string;
-using std::ostream;
-using std::format;
-
 
 class Task
 {
@@ -108,7 +105,7 @@ class Task
 		 * Modifies: Nothing.
 		 * Effects: Overloads the << operator to print the task.
 		 */
-		friend ostream& operator<<(ostream& os, const Task& task);
+		friend std::ostream& operator<<(std::ostream& os, const Task& task);
 
 	private:
 

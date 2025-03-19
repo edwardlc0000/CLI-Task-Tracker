@@ -21,13 +21,6 @@
 #include "Task.h"
 #include "TaskList.h"
 
-using std::string;
-using std::filesystem::path;
-using std::cout;
-using std::cin;
-using std::endl;
-using json = nlohmann::json;
-
 class Tracker
 {
 	public:
